@@ -1,7 +1,7 @@
-import { Image, StyleSheet, Text, View} from 'react-native';
+import { Pressable, Image, StyleSheet, Text, View} from 'react-native';
 import Colors from '../constants/Colors';
 import { Product } from "@assets/types"
-
+import { Link } from 'expo-router';
 export const defaultPizzaImage = 'https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg'
 
 type ProductListItemProps = {
@@ -10,14 +10,20 @@ type ProductListItemProps = {
 
  const ProductListItem = ( {product}: ProductListItemProps ) => {
     return(
-    <View style={styles.container}>
+      <Link href={`/${product.id}`} asChild> 
+      {/* product.id is used to go details of unique item in the list */}
+      {/* asChild is imp for styles to reflected on Link from View */}
+      <Pressable  style={styles.container}>
         <Image 
         source={{uri: product.image || defaultPizzaImage}} 
         style={styles.image} 
+        resizeMode="contain"
         />
         <Text style={styles.title}>{product.name}</Text>
         <Text style={styles.price}>${product.price}</Text>
-      </View>
+      </Pressable>
+      {/* View replaced with Pressable becoz View do not support onPress Event */}
+      </Link>
     );
   };
 
