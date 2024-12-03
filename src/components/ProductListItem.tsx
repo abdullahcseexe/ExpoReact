@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, View} from 'react-native';
 import Colors from '../constants/Colors';
-import { Product } from "@/assets/types"
+import { Product } from "@assets/types"
 
 export const defaultPizzaImage = 'https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg'
 
